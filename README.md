@@ -1,15 +1,16 @@
 # 2023_STUDY
-2023 ALPS study repository
-
+2023 ALPS study repository  
+[2023 Study Overview](https://url.kr/avcs5q)
+  
 ## Previous Study
 [2022@ALPS](https://github.com/alps-jbnu/22ALPStudy)
-
+  
 ## Study in Progress
 - [Basic](./Basic/)
 - [Intermediate](./Intermediate/)
 - [Exercise](./Exercise/)
 - [Advanced](./Advanced/)
-
+  
 ## How to Contribute
 1. fork
 2. 해당 스터디 내에 자신의 이름으로 폴더 만들기  
