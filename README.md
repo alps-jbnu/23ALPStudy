@@ -1,4 +1,4 @@
-# 2023_STUDY
+# 23ALPStudy
 2023 ALPS study repository  
 [2023 Study Overview](https://url.kr/avcs5q)
   
