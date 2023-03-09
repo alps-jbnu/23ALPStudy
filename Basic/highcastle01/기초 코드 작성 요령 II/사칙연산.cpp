@@ -11,7 +11,7 @@ int main(void)
 	
 	cin >> a>>b;
 	
-	cout << a+b << endl << a-b << endl << a*b << endl << a/b << endl << a%b;
+	cout << a+b << "\n" << a-b << "\n" << a*b << "\n" << a/b << "\n" << a%b;
 	
 	return 0;
 }
