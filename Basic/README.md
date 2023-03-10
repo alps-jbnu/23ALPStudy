@@ -25,3 +25,24 @@
 | 7 : 5/14 ~ 5/27 | [Tree](https://blog.encrypted.gg/1019?category=773649) |
 | 8 : 5/28 ~ 6/3 | [BST](https://blog.encrypted.gg/1013?category=773649) /  [Heap](https://blog.encrypted.gg/1015?category=773649) |
 | 9 : ~ 6/19 | Final Exam |
+
+## 문제집
+- 최소 기본문제 + (체크 되어있는)응용문제 이상 풀기
+
+| 번호 |                                                    주제                                                    |
+| :--: | :--------------------------------------------------------------------------------------------------------: |
+|  00  |                                          오리엔테이션 (문제집 X)                                           |
+|  01  |                                      기초 코드 작성 요령 I (문제집 X)                                      |
+|  02  | [기초 코드 작성 요령 II](https://github.com/encrypted-def/basic-algo-lecture/blob/master/workbook/0x02.md) |
+|  03  |         [Array](https://github.com/encrypted-def/basic-algo-lecture/blob/master/workbook/0x03.md)          |
+|  04  |      [Linked list](https://github.com/encrypted-def/basic-algo-lecture/blob/master/workbook/0x04.md)       |
+|  05  |         [Stack](https://github.com/encrypted-def/basic-algo-lecture/blob/master/workbook/0x05.md)          |
+|  06  |         [Queue](https://github.com/encrypted-def/basic-algo-lecture/blob/master/workbook/0x06.md)          |
+|  07  |         [Deque](https://github.com/encrypted-def/basic-algo-lecture/blob/master/workbook/0x07.md)          |
+|  08  |          [BFS](https://github.com/encrypted-def/basic-algo-lecture/blob/master/workbook/0x09.md)           |
+|  09  |         [Graph](https://github.com/encrypted-def/basic-algo-lecture/blob/master/workbook/0x18.md)         |
+|  10  |       [Recursion](https://github.com/encrypted-def/basic-algo-lecture/blob/master/workbook/0x0B.md)        |
+|  11  |         [백트래킹](https://github.com/encrypted-def/basic-algo-lecture/blob/master/workbook/0x0C.md)          |
+|  12  |          [Tree](https://github.com/encrypted-def/basic-algo-lecture/blob/master/workbook/0x19.md)          |
+|  13  |          [BST](https://github.com/encrypted-def/basic-algo-lecture/blob/master/workbook/0x16.md)           |
+|  14  |   [우선순위 큐(heap)](https://github.com/encrypted-def/basic-algo-lecture/blob/master/workbook/0x17.md)    |
