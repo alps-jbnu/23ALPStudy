@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int N;
+	cin >> N;
+	
+	int arr[20];
+	for(int i=0; i<N; i++)
+	{
+		cin >> arr[i];
+	}
+	
+	int Y_sum = 0;
+	int k = 0;
+	for(int i=0; i<N; i++)
+	{
+		Y_sum += 10;
+		k = arr[i]/30;
+		Y_sum += 10*k;
+	}
+	
+	int M_sum = 0;
+	k = 0;
+	for(int i=0; i<N; i++)
+	{
+		M_sum += 15;
+		k = arr[i]/60;
+		M_sum += 15*k;
+	}
+	
+	if(Y_sum < M_sum)
+		cout << "Y "<<Y_sum;
+	else if(Y_sum == M_sum)
+		cout << "Y M "<<Y_sum;
+	else
+		cout << "M "<<M_sum;
+		
+	return 0;
+}
