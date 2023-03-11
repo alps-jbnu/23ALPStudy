@@ -1,6 +1,6 @@
 /*
 	Day: 2023.03.10
-	Âü°í : ¿ª½½·¡½¬(\) Ãâ·Â
+	ì°¸ê³  : ì—­ìŠ¬ëž˜ì‰¬(\) ì¶œë ¥
 */
 #include <iostream>
 using namespace std;
