@@ -47,6 +47,7 @@ int main(void)
 /* 컴파일러에서는 되는데 백준에서는 틀렸습니다가 뜨는 풀이..
 #include<iostream>
 #include<algorithm>
+#include<vector>
 
 using namespace std;
 
