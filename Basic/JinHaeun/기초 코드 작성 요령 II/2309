@@ -34,7 +34,7 @@ int Solution(int *arr)
 	}
 	
 	return -1;
-}
+} // 왜 리턴이 두개 있지? 왜 리턴 지우면 런타임 에러나지? 
 
 int main()
 {
