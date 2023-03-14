@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main(){
+	int x;
+	scanf("%d",&x);
+	if(x>=90)				//90점 이상  
+		printf("A",x);
+	else if(x >=80)			//80점 이상 90점 미만  
+		printf("B",x);
+	else if(x >=70)			//70점 이상 80점 미만  
+		printf("C",x);
+	else if(x >=60)			//60점 이상 70점 미만  
+		printf("D",x);
+	else 					//60점 미만 
+		printf("F",x);
+
+	
+	return 0;
+}

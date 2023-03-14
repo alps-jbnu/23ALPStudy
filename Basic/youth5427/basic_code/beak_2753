@@ -1,0 +1,10 @@
+#include <stdio.h>
+int main(){
+	int year, result;
+	
+	scanf("%d", &year);													  
+	result = (year%4 == 0) && (year%100 != 0) || (year % 400 == 0);	 
+	printf("%s", (result==1)?"1":"0");						 
+
+	return 0;
+}
