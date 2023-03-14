@@ -19,7 +19,7 @@ int main() {
     sort(vec.begin(),vec.end());
     vec.erase(unique(vec.begin(),vec.end()),vec.end());
     for(int i=0; i<n; i++) {
-        cout << upper_bound(vec.begin(),vec.end(),cp[i]) - vec.begin()-1 << " ";
+        cout << lower_bound(vec.begin(),vec.end(),cp[i]) - vec.begin() << " ";
     }
 
 }
