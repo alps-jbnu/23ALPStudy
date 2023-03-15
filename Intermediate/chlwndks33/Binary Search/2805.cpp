@@ -19,7 +19,7 @@ int main() {
     int en = *max_element(vec.begin(),vec.end());
     while(st <= en) {
         int mid = (st + en) / 2; //나무의 높이
-        long long sum = 0;
+        long long sum = 0; //int로 선언해서 틀렸음. 자른 나무들을 더하다보면 int 형 범위를 넘어갈 수 있음
         for(int i=0; i<n; i++) {
             if(vec[i]>mid) sum += vec[i] - mid;
         }
