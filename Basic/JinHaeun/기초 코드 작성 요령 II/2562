@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int s[9];
+	int i;
+	int max = 0;
+	int n;
+	
+	for(i=0; i<9; i++)
+	{
+		cin >> s[i];
+	}
+	
+	for(i=0; i<9; i++)
+	{
+		if(s[i] > max)
+			max = s[i];
+	}
+	
+	for(i=0; i<9; i++)
+	{
+		if(s[i] == max)
+			n = i;
+	}
+	
+	cout << max<<endl;
+	cout << n+1;
+
+	return 0;
+}
