@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+
+void func(int cnt)
+{
+	if(cnt == 0)
+		cout << 'E'<<endl;
+	else if(cnt == 1)
+		cout << 'A'<<endl;
+	else if(cnt == 2)
+		cout << 'B'<<endl;
+	else if(cnt == 3)
+		cout << 'C'<<endl;
+	else
+		cout << 'D'<<endl;
+}
+
+int main()
+{
+	int a[4];
+	int b[4];
+	int c[4];
+	
+	for(int i=0; i<4; i++)
+	{
+		cin >> a[i];
+	}
+	for(int i=0; i<4; i++)
+	{
+		cin >> b[i];
+	}
+	for(int i=0; i<4; i++)
+	{
+		cin >> c[i];
+	}
+	
+	int cnt = 0;
+	for(int i=0; i<4; i++)
+	{
+		if(a[i] == 0)
+			cnt++;
+	}
+	func(cnt);
+	
+	
+	cnt = 0;
+	for(int i=0; i<4; i++)
+	{
+		if(b[i] == 0)
+			cnt++;
+	}
+	func(cnt);
+		
+	cnt = 0;
+	for(int i=0; i<4; i++)
+	{
+		if(c[i] == 0)
+			cnt++;
+	}
+	func(cnt);
+	
+	return 0;
+}

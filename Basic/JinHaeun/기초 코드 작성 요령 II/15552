@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	cin.tie(NULL);   //입력과 출력의 연결을 끊어줌 - endl사용하면 안됨
+	ios_base::sync_with_stdio(false);   //C의 stdio와 C++의 iostream의 동기화를 비활성화 한다 (즉, 평소엔 서로 동기화 상태)
+	int T;
+	cin >> T;
+	
+	int a, b;
+	for(int i=0; i<T; i++)
+	{
+		cin >> a >> b;
+		cout << a+b <<"\n";
+	}
+
+	return 0;
+}
