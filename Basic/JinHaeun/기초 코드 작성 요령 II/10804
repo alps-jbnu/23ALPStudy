@@ -1,0 +1,23 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+#define N 21
+
+int main()
+{
+	int a, b;
+	int arr[N] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
+	
+	for(int i=0; i<10; i++){
+		cin >> a >> b;
+		reverse(arr+a, arr+b+1);
+	}
+	
+	for(int i=1; i<N; i++)
+	{
+		cout << arr[i]<< ' ';    //카드 번호랑 내용숫자 맞추려면 0에는 0들어가있어야함. 그리고 1부터 출력. 
+	}
+
+	return 0;
+}
