@@ -9,7 +9,7 @@ void insert(int addr, int num){
    dat[unused] = num;
    pre[unused] = addr;
    nxt[unused] = nxt[addr];
-   pre[nxt[addr]] = unused;
+   if (nxt[addr] != -1) pre[nxt[addr]] = unused;
    nxt[addr] = unused;
    unused++;
 
@@ -18,7 +18,7 @@ void insert(int addr, int num){
 
 void erase(int addr){
    nxt[pre[addr]] = nxt[addr];
-   pre[nxt[addr]] = pre[addr];
+   if (nxt[addr] != -1) pre[nxt[addr]] = pre[addr];
    dat[addr] = 0;
    nxt[addr] = -1;
    pre[addr] = -1;
