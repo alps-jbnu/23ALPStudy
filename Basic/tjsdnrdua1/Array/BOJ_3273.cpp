@@ -8,8 +8,6 @@ int main() {
 	 
 	int pair = 0;
 	int n, x;
-	//int* a;
-	//int a[100000]; //Warning C262: exceeds stack size 16384
 
 	cin >> n;
 	//a = new int[1000001];
@@ -27,5 +25,4 @@ int main() {
 		idx_arr[a[j]]=true;
 	}
 	cout << pair;
-	//delete[] a;
 }
