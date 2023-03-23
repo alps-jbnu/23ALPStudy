@@ -1,0 +1,33 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int N;
+int arr[10002];
+
+int main(void)
+{
+	long long count = 0;
+	cin >> N;
+
+	for (int i = 0; i < N; i++)
+	{
+		cin >> arr[i];
+	}
+
+	sort(arr, arr + N);
+
+	for (int i = 0; i < N - 1; i++)
+	{
+		for (int j = i + 1; j < N; j++)
+		{
+			auto num1 = upper_bound(arr + j + 1, arr + N, -arr[i] - arr[j]);
+			auto num2 = lower_bound(arr + j + 1, arr + N, -arr[i] - arr[j]);
+
+			count += (num1 - num2);
+		}
+	}
+
+	cout << count;
+	return 0;
+}
