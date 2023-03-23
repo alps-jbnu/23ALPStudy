@@ -7,15 +7,11 @@ void Push(int x) { dat[pos++] = x; }
 bool Empty() {
     return pos == 0;
 }
-int Pop() {
-    if (pos) return dat[--pos];
-    else
-        return -1;
+void Pop() {
+    pos--;
 }
 int Top() {
-    if (pos) return dat[pos - 1];
-    else
-        return -1;
+    return dat[pos-1];
 }
 int Size() {
     return pos;
@@ -34,13 +30,22 @@ int main() {
             cin >> add;
             Push(add);
         }
-        else if (cmd == "pop")
-            cout << Pop() << '\n';
+        else if (cmd == "pop") {
+            if (pos) {
+                cout << Top() << '\n';
+                Pop();
+            }
+            else { cout << -1 << '\n'; }
+        }
         else if (cmd == "size")
             cout << Size() << '\n';
         else if (cmd == "empty")
             cout << Empty() << '\n';
-        else
-            cout << Top() << '\n';
+        else {// if(cmd=="top")
+            if (pos)
+                cout << Top() << '\n';
+            else
+                cout << -1 << '\n';
+        }
     }
 }
