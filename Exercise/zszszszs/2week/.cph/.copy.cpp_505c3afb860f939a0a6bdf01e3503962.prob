@@ -1,0 +1,1 @@
+{"name":"Local: copy","url":"/23ALPStudy/Exercise/zszszszs/2week/copy.cpp","tests":[{"id":1679107459126,"input":"3 3\n1 0 2\n0 0 0\n3 0 0\n2 3 2","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/23ALPStudy/Exercise/zszszszs/2week/copy.cpp","group":"local","local":true}
