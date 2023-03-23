@@ -1,4 +1,4 @@
-# [alphasobs](solved.ac/suin0413)
+# [지수인](solved.ac/suin0413)
 
 ```
 2주차 스터디
