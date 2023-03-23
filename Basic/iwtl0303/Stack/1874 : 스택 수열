@@ -30,10 +30,6 @@ int main(void)
     }
     else if (num < s.top()){
       while(num != s.top()){
-        if (num > s.top()) {
-          flag = 1;
-          break;
-          }
         s.pop();
         ans.push_back('-');
         if (num == s.top()){
