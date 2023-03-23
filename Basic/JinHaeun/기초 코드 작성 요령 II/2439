@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int N;      // 줄 개수 
+	int i, j;
+	
+	cin >> N;
+	
+	for(i=N; i>0; i--)
+	{
+		for(j=1; j<i; j++)
+		{
+			cout << ' ';
+		}
+		for(j=N+1-i; j>0; j--)
+		{
+			cout << "*";
+		}
+		cout << endl;
+	}
+	
+	return 0;
+} 

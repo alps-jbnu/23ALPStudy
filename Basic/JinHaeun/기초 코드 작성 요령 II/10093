@@ -1,0 +1,31 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main()
+{
+	long long A;
+	long long B;
+	cin >> A >> B;
+	
+	if(A>B)       //B가 A보다 항상 크다곤 말 안함 그래서 바꿔줘야됨.
+	{
+		swap(A, B);
+	}
+	
+	if(A == B)
+	{
+		cout << 0 <<endl;
+	}
+	else
+	{
+		cout << B-A-1 <<endl;
+		while(A < B-1)
+		{
+			A++;
+			cout << A <<' ';
+		}
+	}
+	
+	return 0;
+}
