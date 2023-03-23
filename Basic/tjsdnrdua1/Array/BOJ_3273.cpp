@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 bool idx_arr[2000001];	//0 0 ... 0
-int a[100001] = {};	//simple sol for C262...
+int a[100001] = {};
 int main() {
 	ios::sync_with_stdio(0);
 	cin.tie(0);
