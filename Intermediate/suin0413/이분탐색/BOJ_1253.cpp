@@ -4,7 +4,8 @@ using namespace std;
 int cnt, n;
 vector<int> a;
 
-void solve(int i) {
+void solve(int i) 
+{
   for(int j = 0; j < n; j++) {
     if(j == i) continue; // 같은 수면 넘어감
     int x = a[i] - a[j];

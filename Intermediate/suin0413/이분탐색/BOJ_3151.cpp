@@ -3,7 +3,8 @@ using namespace std;
 
 int n, arr[10003];
 
-int main(void) {
+int main(void) 
+{
   ios::sync_with_stdio(0);
   cin.tie(0);
   cin >> n;

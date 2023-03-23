@@ -8,7 +8,8 @@ ll dp1[1001], dp2[1001];
 vector<ll> vec1, vec2;
 ll cnt;
 
-int main(void) {
+int main(void) 
+{
   ios::sync_with_stdio(0);
   cin.tie(0);
   int T, N, M;

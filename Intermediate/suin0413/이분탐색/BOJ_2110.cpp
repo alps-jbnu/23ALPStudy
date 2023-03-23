@@ -4,7 +4,8 @@ using namespace std;
 int n, c;
 int x[200002];
 
-bool solve(int len){
+bool solve(int len)
+{
   int idx = 0, cnt = 0;
     while(idx != n) {
       idx = lower_bound(x + idx, x + n, x[idx] + len) - x;

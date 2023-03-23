@@ -4,7 +4,8 @@ using namespace std;
 typedef long long ll;
 int n, m, arr[1000005];
 
-bool solve(ll mid){
+bool solve(ll mid)
+{
     ll sum = 0;
     for(int i = 0;i<n;i++){
         if(arr[i]>mid) sum += arr[i]-mid;

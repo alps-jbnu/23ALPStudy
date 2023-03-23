@@ -4,7 +4,8 @@ using namespace std;
 int n, m, a[500005], b[500005];
 vector<int> v;
 
-int main(void) {
+int main(void) 
+{
   ios::sync_with_stdio(0);
   cin.tie(0);
   cin >> n >> m;
