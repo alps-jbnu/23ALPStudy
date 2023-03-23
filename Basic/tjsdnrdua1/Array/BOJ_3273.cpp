@@ -10,7 +10,6 @@ int main() {
 	int n, x;
 
 	cin >> n;
-	//a = new int[1000001];
 	for (int i = 0; i < n; i++)
 		cin >> a[i];
 	cin >> x;
