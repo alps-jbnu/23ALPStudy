@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+//STLlist이용한 코드  
+int main(void) {
+	
+    ios::sync_with_stdio(0);
+  	cin.tie(0);
+  
+ 	string init;
+	cin >> init;
+ 	list<char> L;
+ 	
+	for (auto c : init) L.push_back(c);
+	auto cursor = L.end();
+	int q;
+	cin >> q;
+	
+	while (q--) {
+  		char op;
+    	cin >> op;
+    	if (op == 'P') {
+      		char add;
+      		cin >> add;
+      		L.insert(cursor, add);
+    	}
+    	else if (op == 'L') {
+      		if (cursor != L.begin()) cursor--;   //cursor가 L.bigin인데  L들어올 떄 예외처리 
+    	}
+    	else if (op == 'D') {
+      		if (cursor != L.end()) cursor++;     //cursor가 L.end인데  D들어올 떄 예외처리 
+    	}
+    	else { // 'B'
+    		if (cursor != L.begin()) {
+        	cursor--;
+        	cursor = L.erase(cursor);
+      		}
+    	}
+    }
+  	for (auto c : L) cout << c;
+}
