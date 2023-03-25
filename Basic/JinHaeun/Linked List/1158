@@ -1,0 +1,55 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int pre[5001];
+int nxt[5001];
+
+vector<int> v;
+
+int main(void){
+  	ios::sync_with_stdio(0);
+  	cin.tie(0);
+  	
+  	int N, K;
+  	int len;
+  	
+  	cin >> N >> K;
+  	len = N;
+
+  	for(int i = 1; i <= N; ++i){
+  		if(i == 1) {
+  			pre[i] = N;
+  			nxt[i] = i+1;
+		}
+		else if(i == N) {
+			pre[i] = i-1;
+			nxt[i] = 1;
+		}
+		else {
+			pre[i] = i-1;
+    		nxt[i] = i+1;
+		}
+  	}
+
+  	int i = 1;
+  	for(int cursor = 1; len != 0; cursor = nxt[cursor]){
+    	if(i == K){
+      		pre[nxt[cursor]] = pre[cursor];
+      		nxt[pre[cursor]] = nxt[cursor];
+      		v.push_back(cursor);
+      		i = 1;
+      		len--;
+    	} 
+		else 
+			i++;
+  	}
+
+  	cout << "<";
+  	for(size_t i = 0; i < v.size(); ++i) {
+    	cout << v[i];
+    	if(i != v.size() - 1) 
+			cout << ", ";
+  	}
+  	cout << ">";
+}

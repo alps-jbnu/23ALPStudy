@@ -1,0 +1,34 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int card_sang[500002];
+int card_num[500002];
+int N, M;
+
+int main(void)
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	cin >> N;
+	for (int i = 0; i < N; i++)
+	{
+		cin >> card_sang[i];
+	}
+
+	sort(card_sang, card_sang + N);
+
+	cin >> M;
+	for (int i = 0; i < M; i++)
+	{
+		cin >> card_num[i];
+	}
+	
+	for (int i = 0; i < M; i++)
+	{
+		cout << binary_search(card_sang, card_sang + N, card_num[i]) << ' ';
+	}
+
+	return 0;
+}
