@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+	int a, b, c;
+	cin >> a >> b >> c;
+	
+	int sum = 0;
+	
+	if(a == b)
+	{
+		if(b == c)
+		{
+			sum = 10000+a*1000;
+		}
+		else
+		{
+			sum = 1000+a*100;
+		}
+	}
+	else if(a == c)
+	{
+		sum = 1000+a*100;
+	}
+	else if(b == c)
+	{
+		sum = 1000+b*100;	
+	}
+	else
+	{
+		if(a > b && a > c)
+			sum = a*100;
+		else if(b > a && b > c)
+			sum = b*100;
+		else
+			sum = c*100;
+	}
+	
+	cout << sum;
+	
+	return 0;
+}
