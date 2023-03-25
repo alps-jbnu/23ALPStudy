@@ -13,6 +13,10 @@ int main() {
     cin >>n;
     for(int i=1; i<=n; i++)
         cin >> k[i];
+    if(n==1) {
+        cout << k[1];
+        return 0;
+    }
     arr[1][1] = k[1];
     arr[1][2] = 0;
     arr[2][1] = k[2];
