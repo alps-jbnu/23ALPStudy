@@ -1,0 +1,25 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int D[1002];
+int mod = 10007;
+
+int main(void)
+{
+	int N;
+	cin >> N;
+
+	D[0] = 0;
+	D[1] = 1;
+	D[2] = 3;
+
+	for (int i = 3; i <= N; i++)
+	{
+		D[i] = (D[i - 1] + D[i - 2] + D[i - 2]) % mod;
+	}
+
+	cout << D[N];
+
+	return 0;
+}
