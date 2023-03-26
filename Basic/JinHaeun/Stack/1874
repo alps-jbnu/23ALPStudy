@@ -32,7 +32,7 @@ int main()
         }
         else
         {
-            cout << "NO";
+            cout << "NO";   // a로 입력받은게 top에 없으면 빼는게 불가능하다
             return 0;
         }
     }
