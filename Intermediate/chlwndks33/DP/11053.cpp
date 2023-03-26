@@ -18,8 +18,8 @@ int main() {
     fill(d+1,d+n+1,1);
     for(int i=1; i<=n; i++) {
         for(int j=1; j<i; j++) {
-            if(arr[i] > arr[j] && d[i] <= d[j]) {
-               d[i] = d[j] + 1;
+            if(arr[i] > arr[j]) {
+               d[i] = max(d[i],d[j] + 1);
             }
         }
     }
