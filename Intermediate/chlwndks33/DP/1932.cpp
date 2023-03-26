@@ -20,7 +20,7 @@ int main() {
     d[1][1] = arr[1][1];
     for(int i=2; i<=n; i++) {
         for(int j=1; j<=i; j++) {
-            if(j==1) { 
+            if(j==1) {  //범위밖에 값은 전역변수라 0이여서  굳이 케이스를 안나눠줘도 됐엇다.
                 d[i][j] = d[i-1][j] + arr[i][j];
             }
             else if(j==i) {
