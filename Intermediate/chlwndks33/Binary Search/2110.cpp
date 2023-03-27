@@ -20,7 +20,6 @@ int main() {
     while(st<=en) {
         int mid =  (st + en) /2;
         int num = 1;
-        cout << "st " << st << "en " << en << "mid " << mid << '\n';
         int start = vec[0];
         for(int i=1; i<n; i++) {
             int check = vec[i];
