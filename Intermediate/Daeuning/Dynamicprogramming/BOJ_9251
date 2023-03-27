@@ -1,0 +1,35 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+string arr1;
+string arr2;
+int D[1002][1002];
+
+int main(void)
+{
+	cin >> arr1;
+	cin >> arr2;
+
+	int length1 = arr1.length();
+	int length2 = arr2.length();
+
+	for (int i = 1; i <= length1; i++)
+	{
+		for (int j = 1; j <= length2; j++)
+		{
+			if (arr1[i - 1] == arr2[j - 1])
+			{
+				D[i][j] = D[i - 1][j - 1] + 1;
+			}
+			else if (arr1[i - 1] != arr2[j - 1])
+			{
+				D[i][j] = max(D[i - 1][j], D[i][j - 1]);
+			}
+		}
+	}
+
+	cout << D[length1][length2];
+
+	return 0;
+}
