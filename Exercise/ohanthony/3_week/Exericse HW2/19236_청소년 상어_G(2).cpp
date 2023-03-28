@@ -98,8 +98,8 @@ void dfs(int y, int x, int dir, int sum) {
 
 int main() {
 #ifndef ONLINE_JUDGE
-  freopen("C:/Users/vl619/Development/vsCode_C++/input.txt", "r", stdin);
-  freopen("C:/Users/vl619/Development/vsCode_C++/output.txt", "w", stdout);
+  freopen("E:/Development/vsCode_C++/input.txt", "r", stdin);
+  freopen("E:/Development/vsCode_C++/output.txt", "w", stdout);
 #endif
 
   ios::sync_with_stdio(0);
