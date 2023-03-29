@@ -1,0 +1,28 @@
+#include <iostream>
+
+int main()
+{
+	int A, B, C;
+	int sum;
+	int arr[10] = {0, };
+	int num;
+	int i;
+	
+	cin >> A;
+  cin >> B;
+  cin >> C;
+	
+	sum = A * B * C;
+	
+	while(sum > 0)
+	{
+		num = sum % 10;
+		arr[num]++;
+		sum = sum/10;
+	}
+	
+	for(i = 0; i <= 9; i++)
+	{
+		cout << arr[i] <<"\n";
+	}
+}
