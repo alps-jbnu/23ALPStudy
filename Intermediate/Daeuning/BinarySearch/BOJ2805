@@ -1,0 +1,52 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+int a[1000002];
+
+int main(void)
+{
+	int N, M, st, en;
+
+	cin >> N >> M;
+
+	for (int i = 0; i < N; i++)
+	{
+		cin >> a[i];
+	}
+
+	sort(a, a + N);
+
+	st = 0;
+	en = *max_element(a, a + N);
+
+	while (st < en)
+	{
+		int mid = (st + en + 1) / 2;
+		long long count = 0;
+		
+		for (int i = 0; i < N; i++)
+		{
+			if (a[i] > mid)
+			{
+				count += (a[i] - mid);
+			}
+			else
+			{
+				continue;
+			}
+		}
+
+		if (count >= M)
+		{
+			st = mid;
+		}
+		else if (count < M)
+		{
+			en = mid - 1;
+		}
+	}
+
+	cout << st;
+
+	return 0;
+}
