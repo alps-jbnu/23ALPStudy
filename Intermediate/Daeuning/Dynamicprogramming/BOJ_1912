@@ -1,0 +1,28 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int D[100002];
+int num[100002];
+
+int main(void)
+{
+	int N, cmpr;
+
+	cin >> N;
+
+	for (int i = 1; i <= N; i++)
+	{
+		cin >> num[i];
+	}
+
+	for (int i = 1; i <= N; i++)
+	{
+		cmpr = num[i];
+		D[i] = max(cmpr, D[i - 1] + cmpr);
+	}
+
+	cout << *max_element(D + 1, D + 1 + N);
+
+	return 0;
+}
