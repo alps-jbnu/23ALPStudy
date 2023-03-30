@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>  //iostream, deque, vector, utility(pair)
+#include<bits/stdc++.h>  //iostream, deque, utility(pair)
 using namespace std;
 #define X first
 #define Y second
