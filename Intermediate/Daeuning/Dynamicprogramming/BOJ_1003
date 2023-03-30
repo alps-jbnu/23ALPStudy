@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+int D_1[42];
+int D_0[42];
+
+int main(void)
+{
+	int T, N;
+
+	cin >> T;
+	D_1[1] = 1;
+	D_0[1] = 0;
+	D_1[0] = 0;
+	D_0[0] = 1;
+
+	while (T--)
+	{
+		cin >> N;
+
+		for (int i = 2; i <= N; i++)
+		{
+			D_1[i] = D_1[i - 2] + D_1[i - 1];
+			D_0[i] = D_0[i - 2] + D_0[i - 1];
+		}
+
+		cout << D_0[N]<< ' ' << D_1[N] << '\n';
+	}
+
+	return 0;
+}

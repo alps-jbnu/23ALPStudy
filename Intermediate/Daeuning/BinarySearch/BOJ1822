@@ -1,0 +1,45 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+int n_A, n_B, num;
+vector<int> A, B, C;
+
+int main(void)
+{
+	cin >> n_A >> n_B;
+
+	for (int i = 0; i < n_A; i++)
+	{
+		cin >> num;
+		A.push_back(num);
+	}
+
+	for (int i = 0; i < n_B; i++)
+	{
+		cin >> num;
+		B.push_back(num);
+	}
+
+	sort(A.begin(), A.end());
+	sort(B.begin(), B.end());
+
+	for (int i = 0; i < n_A; i++)
+	{
+		if (!(binary_search(B.begin(), B.end(), A[i])))
+		{
+			C.push_back(A[i]);
+		}
+	}
+
+	sort(C.begin(), C.end());
+
+	cout << C.size() << '\n';
+	for (int i = 0; i < C.size(); i++)
+	{
+		cout << C[i] << ' ';
+	}
+
+	return 0;
+}

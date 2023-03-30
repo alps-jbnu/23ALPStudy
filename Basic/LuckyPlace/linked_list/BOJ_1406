@@ -1,0 +1,58 @@
+#include <iostream>
+#include <list>
+#include <string>
+using namespace std;
+
+int main(void)
+{
+	cin.tie(0);
+	ios::sync_with_stdio(0);
+	list<char> L;
+	string str;			// �ʱ� �����⿡ �ԷµǾ� �ִ� ���ڿ�
+	cin >> str;
+	
+	for (auto e : str)
+	{
+		L.push_back(e);
+	}
+	list<char>::iterator t = L.begin();
+	for (int i = 0; i < str.size(); i++)
+		++t;
+	
+	int N;				// �ݺ� Ƚ��
+	cin >> N;
+	char command;
+	char addc;
+	for (int i = 0; i < N; i++)
+	{
+		cin >> command;
+		if (command == 'L')
+		{
+			if(t != L.begin())
+				--t;
+		}
+		else if (command == 'D')
+		{
+			if(t != L.end())
+				++t;
+		}
+		else if (command == 'B')
+		{
+			if (t != L.begin())
+			{
+				--t;
+				t = L.erase(t);
+			}
+		}
+		else if (command == 'P')
+		{
+			cin >> addc;
+			L.insert(t, addc);
+		}
+	}
+	
+	for (auto e : L)
+		cout << e;
+
+	return 0;
+}
