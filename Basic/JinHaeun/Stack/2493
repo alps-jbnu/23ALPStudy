@@ -1,0 +1,41 @@
+#include <iostream>
+#include <stack>
+using namespace std;
+
+int main()
+{
+	ios::sync_with_stdio(0);
+    cin.tie(0);
+    
+    int n;        // 탑의 수
+    cin >> n;
+
+    stack<pair<int, int> > stk;    //pair 클래스를 이용해서 스택의 인덱스 출력 가능하게 함 (pair<int, int>: index, height)        
+
+    int a;
+
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a;
+        
+        while (!stk.empty())
+        {
+            if (stk.top().second > a)     //탑보다 높이 낮으면  
+            {
+                cout << stk.top().first << " ";      //해당 탑의 인덱스 출력  
+                break;
+            }
+            else
+                stk.pop();         //왼쪽 탑보다 높이 높으면 pop하고 다시 비교  
+        }
+        
+        if (stk.empty())        //왼쪽 탑이 없으면 0출력  
+            cout << "0 ";     
+
+        stk.push(make_pair(i+1, a));   //현재 입력받은 탑 push (make_pair(현재 인덱스에서 하나 늘려서, 입력받은 높이)) 
+    }
+
+    
+
+    return 0;
+}

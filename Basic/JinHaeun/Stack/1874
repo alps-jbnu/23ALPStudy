@@ -1,0 +1,45 @@
+#include <iostream>
+#include <stack>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    int n;
+    cin >> n;
+
+    stack<int> stk;
+    vector<char> op;
+
+    int a;
+    int cnt = 1;
+
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a;
+
+        while (cnt <= a)
+        {
+            stk.push(cnt);
+            cnt++;
+            op.push_back('+');
+        }
+
+        if (stk.top() == a)
+        {
+            stk.pop();
+            op.push_back('-');
+        }
+        else
+        {
+            cout << "NO";   // a로 입력받은게 top에 없으면 빼는게 불가능하다
+            return 0;
+        }
+    }
+
+    for (int i = 0; i < op.size(); i++)
+        cout << op[i] << '\n';
+    
+
+    return 0;
+}
