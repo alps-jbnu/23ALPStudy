@@ -1,0 +1,33 @@
+#include <iostream>
+#include <stack>
+using namespace std;
+
+stack<int> stk;
+int num;
+
+int main()
+{
+    int K;
+    cin >> K;
+
+    
+    for (int i = 0; i < K; i++)
+    {
+        cin >> num;
+        if (num == 0)
+            stk.pop();
+        else
+            stk.push(num);
+    }
+
+    int sum = 0;
+    while (!stk.empty())
+    {
+        sum += stk.top();  //top을 더해야 하는데 pop을 더해서 오류가 났었음
+        stk.pop();
+    }
+
+    cout << sum;
+
+    return 0;
+}
