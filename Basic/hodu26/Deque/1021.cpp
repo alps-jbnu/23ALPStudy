@@ -24,14 +24,6 @@ int main(){
             deq.pop_front();
             continue;
         }
-        else if (find > deq.front()){
-            while (find != deq.front()){
-                deq.push_back(deq.front());
-                deq.pop_front();
-                tmp++;
-            }
-            deq.pop_front();
-        }
         else {
             while (find != deq.front()){
                 deq.push_front(deq.back());
