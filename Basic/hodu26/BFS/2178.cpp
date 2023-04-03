@@ -7,10 +7,10 @@ bool vis[103][103];
 int dx[4] = {0,0,1,-1};
 int dy[4] = {1,-1,0,0};
 
-int findWay_bfs(pair<int,int> wall){
+int findWay_bfs(int N, int M){
     queue<pair<int,int>> q;
-    pair<int,int> cur_loc,nxt_loc, wall_ = {0,0};
-    pair<int,int> flag = make_pair(wall.first-1,wall.second-1);
+    pair<int,int> cur_loc,nxt_loc;
+    pair<int,int> flag = make_pair(N-1,M-1);
     int short_way = 1;
 
     q.push(make_pair(0,0));
@@ -29,7 +29,7 @@ int findWay_bfs(pair<int,int> wall){
         for (int i=0;i<4;i++){
             nxt_loc = make_pair(cur_loc.first+dy[i],cur_loc.second+dx[i]);
 
-            if (wall_ <= nxt_loc && nxt_loc < wall && maze[nxt_loc.first][nxt_loc.second] == '1' && !vis[nxt_loc.first][nxt_loc.second]){
+            if (0 <= nxt_loc.first && nxt_loc.first < N && 0 <= nxt_loc.second && nxt_loc.second < M && maze[nxt_loc.first][nxt_loc.second] == '1' && !vis[nxt_loc.first][nxt_loc.second]){
                 q.push(nxt_loc);
                 vis[nxt_loc.first][nxt_loc.second] = true;
             }
@@ -55,7 +55,7 @@ int main(){
         cin >> maze[i];
     }
 
-    cout << findWay_bfs({N,M});
+    cout << findWay_bfs(N,M);
 
     return 0;
 }
