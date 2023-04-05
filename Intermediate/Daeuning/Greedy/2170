@@ -1,0 +1,44 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <stdio.h>
+using namespace std;
+
+int N, num1, num2, len, ed;
+vector <pair <int, int>> V;
+
+int main(void)
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	cin >> N;
+
+	for (int i = 0; i < N; i++)
+	{
+		cin >> num1 >> num2;
+
+		if (num1 < num2) V.push_back({ num1, num2 });
+		else V.push_back({ num2, num1 });
+	}
+
+	sort(V.begin(), V.end());
+
+	ed = V[0].first;
+
+	for (int i = 0; i < N; i++)
+	{
+		if (V[i].first >= ed) {
+			len += V[i].second - V[i].first;
+			ed = V[i].second;
+		}
+		else if (V[i].first < ed && V[i].second > ed) {
+			len += V[i].second - ed;
+			ed = V[i].second;
+		}
+	}
+
+	cout << len;
+
+	return 0;
+}

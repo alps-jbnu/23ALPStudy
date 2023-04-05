@@ -1,0 +1,40 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+int T, N, num;
+long long M, PF;
+
+int main(void)
+{
+	cin >> T;
+
+	while (T--)
+	{
+		cin >> N;
+		
+		PF = 0;
+		M = 0;
+		vector <int> V;
+
+		for (int i = 0; i < N; i++)
+		{
+			cin >> num;
+			V.push_back(num);
+		}
+
+		for (int i = N - 1; i >= 0; i--)
+		{
+			if (V[i] > M) {
+				M = V[i];
+			} else {
+				PF += M - V[i];
+			}
+		}
+
+		cout << PF << '\n';
+	}
+
+	return 0;
+}
