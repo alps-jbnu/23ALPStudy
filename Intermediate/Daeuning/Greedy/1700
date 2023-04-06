@@ -1,0 +1,70 @@
+#include <iostream>
+#include <algorithm>
+#include <stdio.h>
+#include <vector>
+using namespace std;
+
+int N, K;
+int task[102];
+bool isUsed[102];
+vector <int> multi;
+
+int main(void)
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	int cnt = 0;
+	int ans = 0;
+	cin >> N >> K;
+
+	for (int i = 0; i < K; i++)
+	{
+		cin >> task[i];
+	}
+
+	for (int i = 0; i < K; i++)
+	{
+		int num = task[i];
+
+		if (isUsed[num]) continue;
+		else {
+
+			if (cnt != N)
+			{
+				isUsed[num] = 1;
+				multi.push_back(num);
+				cnt++;
+				continue;
+			}
+		}
+
+		int idx = 0;
+		int lastcnt = 0;
+
+		for (int j = 0; j < N; j++)
+		{
+			int count = 0;
+			for (int k = i + 1; k < K; k++)
+			{
+				if (multi[j] == task[k]) break;
+				count++;
+			}
+
+			if (count > lastcnt)
+			{
+				idx = j;
+				lastcnt = count;
+			}
+		}
+
+		isUsed[multi[idx]] = 0;
+		multi[idx] = num;
+		isUsed[num] = 1;
+		ans++;
+	}
+
+	cout << ans;
+
+	return 0;
+}

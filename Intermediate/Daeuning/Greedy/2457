@@ -1,0 +1,52 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <stdio.h>
+using namespace std;
+
+int N;
+vector <pair<int, int>> V;
+
+int main(void)
+{
+	cin >> N;
+
+	for (int i = 0; i < N; i++) {
+		pair<int, int> a, b;
+		cin >> a.first >> a.second >> b.first >> b.second;
+
+		V.push_back({ a.first * 100 + a.second, b.first * 100 + b.second });
+	}
+
+	sort(V.begin(), V.end());
+
+	int idx = -1;
+	int temp = 0;
+	int res = 0;
+
+	for (int i = 301; i <= 1130 && idx < N; i = temp) {
+		bool flag = false;
+		idx++;
+
+		for (int j = idx; j < V.size(); j++)
+		{
+			if (V[j].first > i) break;
+			if (temp < V[j].second)
+			{
+				temp = V[j].second;
+				idx = j;
+				flag = 1;
+			}
+		}
+
+		if (flag) res++;
+		else {
+			cout << 0 << '\n';
+			return 0;
+		}
+	}
+
+	cout << res << '\n';
+
+	return 0;
+}
