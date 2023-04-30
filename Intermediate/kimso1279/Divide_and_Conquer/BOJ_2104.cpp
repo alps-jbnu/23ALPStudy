@@ -7,7 +7,7 @@ int A[1000001];
 int getMax(int x, int y){
     return (x>y) ? x : y;
 }
-int multi(int from, int to){
+long long multi(int from, int to){
 	if (from == to) return (long long)A[from] * A[from];
 
 	int mid = (from + to) / 2;
