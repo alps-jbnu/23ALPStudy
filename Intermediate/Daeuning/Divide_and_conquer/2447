@@ -1,0 +1,54 @@
+#include <iostream>
+#include <algorithm>
+#define MAX 2200
+using namespace std;
+
+char star[MAX][MAX];
+
+void blank(int x, int y, int N)
+{
+	int width = N / 3;
+
+	if (N == 1) return;
+	else
+	{
+		for (int i = y + width; i < y + 2 * width; i++)
+		{
+			for (int j = x + width; j < x + 2 * width; j++)
+			{
+				star[i][j] = ' ';
+			}
+		}
+
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				blank(x + j * width, y + i * width, width);
+			}
+		}
+	}
+}
+
+
+int main(void)
+{
+	int N;
+
+	cin >> N;
+
+	fill(&star[0][0], &star[MAX -1][MAX], '*');
+
+	blank(0, 0, N);
+
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			cout << star[i][j];
+		}
+		cout << '\n';
+	}
+
+	return 0;
+}
