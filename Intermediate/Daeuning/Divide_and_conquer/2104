@@ -1,0 +1,58 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+int N;
+vector<long long> V;
+
+long long dc(int a, int b) 
+{
+	if (a == b)return V[a] * V[a];
+
+	long long mid = (a + b) / 2;
+	long long minN = V[mid];
+	long long sum = V[mid];
+	long long ret = minN * minN;
+	long long l = mid - 1;
+	long long r = mid + 1;
+
+	while (a <= l || r <= b) {
+		if (a > l) {
+			minN = min(minN, V[r]);
+			sum += V[r++];
+		}
+		else if (r > b) {
+			minN = min(minN, V[l]);
+			sum += V[l--];
+		}
+		else if (V[l] > V[r]) {
+			minN = min(minN, V[l]);
+			sum += V[l--];
+		}
+		else {
+			minN = min(minN, V[r]);
+			sum += V[r++];
+		}
+		ret = max(ret, minN * sum);
+	}
+	ret = max(ret, max(dc(a, mid), dc(mid + 1, b)));
+	return ret;
+}
+
+int main(void) 
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	cin >> N;
+
+	for (int i = 0; i < N; i++) 
+	{
+		int a; cin >> a; V.push_back(a);
+	}
+
+	cout << dc(0, N - 1);
+
+	return 0;
+}
