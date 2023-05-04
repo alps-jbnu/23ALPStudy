@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+using ll = long long;
+
+ll Pow(ll a, ll b, ll c)
+{
+	if (b == 1) return a % c;
+	ll val = Pow(a, b / 2, c);
+	val = val * val % c;
+	if (b % 2 == 0) return val; // 짝수일 경우
+	return val * a % c; // 홀수일 
+}
+
+int main(void)
+{
+	int a, b, c;
+	ll result;
+
+	cin >> a >> b >> c;
+	result = Pow(a, b, c);
+
+	cout << result;
+
+	return 0;
+}
