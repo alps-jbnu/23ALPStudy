@@ -1,0 +1,71 @@
+#include <iostream>
+#include <algorithm>
+#include <string>
+using namespace std;
+
+int arr[65][65];
+
+bool isquadtree(int N, int x, int y)
+{
+	int width = N / 2;
+	int cmpr = arr[y][x];
+	bool istrue = 1;
+
+	for (int i = y; i < y + N; i++)
+	{
+		for (int j = x; j < x + N; j++)
+		{
+			if (cmpr != arr[i][j]) istrue = 0;
+		}
+	}
+
+	return istrue;
+}
+
+void quadtree(int N, int x, int y)
+{
+	int width = N / 2;
+	int cmpr = arr[y][x];
+	
+	if (isquadtree(N, x, y))
+	{
+		cout << cmpr;
+		return;
+	}
+	else
+	{
+		cout << '(';
+
+		for (int i = 0; i < 2; i++)
+		{
+			for (int j = 0; j < 2; j++)
+			{
+				quadtree(width, x + j * width, y + i * width);
+			}
+		}
+
+		cout << ')';
+	}
+}
+
+int main(void)
+{
+	int N;
+
+	cin >> N;
+
+	for (int i = 0; i < N; i++)
+	{
+		string str;
+		cin >> str;
+
+		for (int j = 0; j < N; j++)
+		{
+			arr[i][j] = str[j] - '0';
+		}
+	}
+
+	quadtree(N, 0, 0);
+
+	return 0;
+}

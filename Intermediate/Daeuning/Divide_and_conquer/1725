@@ -1,0 +1,59 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+int N;
+vector<int > V;
+
+int htg(int a, int b) 
+{	
+	if (a == b)	return V[a];			
+	
+	int mid = (a + b) / 2;
+	int ret = V[mid];					
+	int h = V[mid];						
+	int l = mid - 1;					
+	int r = mid + 1;					
+	
+	while (a <= l || r <= b) {		
+		if (a > l) {						
+			h = min(h, V[r]);
+			r++;
+		}
+		else if (r > b) {				
+			h = min(h, V[l]);
+			l--;
+		}
+		else if (V[l] > V[r]) {			
+			h = min(h, V[l]);
+			l--;
+		}
+		else {							
+			h = min(h, V[r]);
+			r++;
+		}
+		ret = max(ret, (r - l - 1) * h);	
+	}
+
+	ret = max(ret, max(htg(a, mid), htg(mid + 1, b)));	
+	return ret;
+}
+
+int main() 
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	cin >> N;
+	
+	for (int i = 0; i < N; i++) 
+	{
+		int temp; 
+		cin >> temp;
+		V.push_back(temp);
+	}
+	cout << htg(0, N - 1);
+
+	return 0;
+}
