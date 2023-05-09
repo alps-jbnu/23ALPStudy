@@ -1,0 +1,29 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int N;
+int P[1002];
+
+int main(void)
+{
+	cin >> N;
+
+	for (int i = 0; i < N; i++){
+		cin >> P[i];
+	}
+
+	sort(P, P + N);
+
+	int sum = 0;
+	int total = 0;
+
+	for (int i = 0; i < N; i++){
+		sum += P[i];
+		total += sum;
+	}
+
+	cout << total;
+
+	return 0;
+}

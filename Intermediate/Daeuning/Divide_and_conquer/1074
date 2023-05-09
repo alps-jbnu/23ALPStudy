@@ -1,0 +1,41 @@
+#include <iostream>
+#include <algorithm>
+#include <math.h>
+using namespace std;
+
+int r, c, num;
+
+void search(int N, int x, int y)
+{
+	int width = N / 2;
+	if ((x == c) && (y == r))
+	{
+		cout << num;
+		return;
+	}
+
+	if ((c >= x) && (c < x + N) && (r >= y) && (r < y + N))
+	{
+		search(width, x, y);
+		search(width, x + width, y);
+		search(width, x, y + width);
+		search(width, x + width, y + width);
+	}
+	else
+	{
+		num += N * N;
+	}
+}
+
+int main(void)
+{
+	int N;
+
+	cin >> N >> r >> c;
+
+	int width = pow(2, N);
+
+	search(width, 0, 0);
+
+	return 0;
+}
