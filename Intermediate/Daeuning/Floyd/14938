@@ -1,0 +1,86 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+#define MAX 102
+#define MAX_COST 0x3f3f3f3f
+
+int D[MAX][MAX];
+int nxt[MAX][MAX];
+int item[MAX];
+int ischeck[MAX];
+int N, M, R, T, a, b, l, cnt, item_num;
+
+int main(void)
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	fill(&D[0][0], &D[MAX - 1][MAX], MAX_COST);
+
+	cin >> N >> M >> R;
+	
+	for (int i = 1; i <= N; i++) {
+		cin >> T;
+		item[i] = T;
+	}
+
+	for (int i = 1; i <= R; i++) {
+		cin >> a >> b >> l;
+		D[a][b] = l;
+		D[b][a] = l;
+		nxt[a][b] = b;
+		nxt[b][a] = a;
+	}
+
+	for (int i = 1; i <= N; i++) { // 기준이 될 중간노드
+		for (int j = 1; j <= N; j++) { // 시작노드
+			for (int k = 1; k <= N; k++) { // 도착할 노드
+				if (j == k)
+				{
+					D[j][k] = 0;
+				}
+				else if (D[j][i] + D[i][k] < D[j][k])
+				{
+					D[j][k] = D[j][i] + D[i][k];
+					nxt[j][k] = nxt[j][i];
+				}
+			}
+		}
+	}
+
+	for (int i = 1; i <= N; i++)
+	{
+		fill(ischeck, ischeck + MAX, 0);
+		cnt = 0;
+
+		for (int j = 1; j <= N; j++)
+		{
+			if (D[i][j] > M || D[i][j] == MAX_COST) continue;
+
+			if (D[i][j] == 0)
+			{
+				cnt += item[i];
+				ischeck[i] = 1;
+			}
+			else
+			{
+				int path = i;
+				while (path != j)
+				{
+					path = nxt[path][j];
+					if (ischeck[path] != 1)
+					{
+						ischeck[path] = 1;
+						cnt += item[path];
+					}
+				}
+			}
+		}
+
+		item_num = max(item_num, cnt);
+	}
+
+	cout << item_num;
+
+	return 0;
+}
