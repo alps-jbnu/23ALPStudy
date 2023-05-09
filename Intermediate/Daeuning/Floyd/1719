@@ -1,0 +1,55 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+#define MAX_COST 0x3f3f3f3f
+#define MAX 202
+
+int N, M;
+int D[MAX][MAX];
+int nxt[MAX][MAX];
+
+int main(void)
+{
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    cin >> N >> M;
+
+    fill(&D[0][0], &D[MAX - 1][MAX], MAX_COST);
+
+    for (int i = 1; i <= N; i++) {
+        D[i][i] = 0;
+    }
+
+    while (M--) {
+        int a, b, c;
+        cin >> a >> b >> c;
+        D[a][b] = c;
+        D[b][a] = c;
+        nxt[a][b] = b;
+        nxt[b][a] = a;
+    }
+
+
+    for (int i = 1; i <= N; i++) { // 기준이 될 중간노드
+        for (int j = 1; j <= N; j++) { // 시작노드
+            for (int k = 1; k <= N; k++) { // 도착할 노드
+                int tmp = D[j][i] + D[i][k];
+                if (tmp < D[j][k]) {
+                    D[j][k] = tmp;
+                    nxt[j][k] = nxt[j][i];
+                }
+            }
+        }
+    }
+
+    for (int i = 1; i <= N; i++) {
+        for (int j = 1; j <= N; j++) {
+            if (i == j) cout << "- ";
+            else cout << nxt[i][j] << ' ';
+        }
+        cout << '\n';
+    }
+
+    return 0;
+}
