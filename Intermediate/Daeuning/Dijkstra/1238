@@ -1,0 +1,59 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <queue>
+#include <tuple>
+using namespace std;
+#define MAX_COST 0x3f3f3f3f
+#define MAX 1002
+
+int N, M;
+vector<pair<int, int>> adj[MAX];
+
+int solve(int st, int en) 
+{
+    int D[1002];
+
+    fill(D, D + N + 1, MAX_COST);
+
+    priority_queue< pair<int, int>,
+        vector<pair<int, int>>,
+        greater<pair<int, int>> > pq;
+
+    D[st] = 0;
+    pq.push({ 0, st });
+    while (!pq.empty()) {
+        int u, v, w, dw;
+        tie(w, u) = pq.top(); pq.pop();
+        if (D[u] != w) continue;
+        for (auto nxt : adj[u]) {
+            tie(dw, v) = nxt;
+            if (dw + w < D[v]) {
+                D[v] = dw + w;
+                pq.push({ D[v], v });
+            }
+        }
+    }
+    return D[en];
+}
+
+int main(void) {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    int en;
+    cin >> N >> M >> en;
+
+    int u, v, w;
+    while (M--) {
+        cin >> u >> v >> w;
+        adj[u].push_back({ w, v });
+    }
+
+    int ans = 0;
+    for (int st = 1; st <= N; st++)
+        ans = max(ans, solve(st, en) + solve(en, st));
+    cout << ans;
+
+    return 0;
+}
