@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <bits/stdc++.h> // 못품
 using namespace std;
 int n;
 int s[10],w[10];
