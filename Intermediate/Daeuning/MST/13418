@@ -1,0 +1,71 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <tuple>
+using namespace std;
+
+vector<int> p(1005, -1);
+tuple<int, int, int> edge[500000];
+int V, E, u, v, up_max, up_min, cnt;
+bool isUp;
+
+int find(int x) {
+	if (p[x] < 0) return x;
+	return p[x] = find(p[x]);
+}
+
+// 같은 그룹인지 아닌지 return.
+bool is_diff_group(int u, int v) {
+	u = find(u); v = find(v);
+	if (u == v) return 0;
+	if (p[u] == p[v]) p[u]--;
+	if (p[u] < p[v]) p[v] = u;
+	else p[u] = v;
+	return 1;
+}
+
+int main(void)
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	cin >> V >> E;
+	cin >> u >> v >> isUp;
+	up_max = !isUp; up_min = !isUp;
+
+	for (int i = 0; i < E; i++) {
+		cin >> u >> v >> isUp;
+		edge[i] = { !isUp, u, v };
+	}
+
+	// 최소
+	sort(edge, edge + E);
+	cnt = 0;
+	is_diff_group(0, 1);
+	for (int i = 0; i < E; i++) {
+		tie(isUp, u, v) = edge[i];
+		if (!is_diff_group(u, v)) continue;
+		up_min += isUp;
+		cnt++;
+		if (cnt == V - 1) break;
+	}
+	
+	//최대
+	fill(p.begin(), p.end(), -1);
+	sort(edge, edge + E , greater<>());
+	cnt = 0;
+	is_diff_group(0, 1);
+	for (int i = 0; i < E; i++) {
+		tie(isUp, u, v) = edge[i];
+		if (!is_diff_group(u, v)) continue;
+		up_max += isUp;
+		cnt++;
+		if (cnt == V - 1) break;
+	}
+
+	int result = (up_max * up_max) - (up_min * up_min);
+
+	cout << result;
+
+	return 0;
+}
