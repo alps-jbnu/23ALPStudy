@@ -1,5 +1,5 @@
 /*
-	Day: 2023.04.05
+	Day: 2023.05.04
 	참고 : 너비우선탐색(BFS)_실패
 */
 #include <iostream>
@@ -18,6 +18,7 @@ int main() {
 	ios::sync_with_stdio(false);	// 지연시간 줄이기
 	cin.tie(NULL);
 	cout.tie(NULL);
+
 	int N = 0;
 	cin >> N;
 	while (N--) {
@@ -25,7 +26,7 @@ int main() {
 		int x, y;
 		for (int i = 0; i < k; i++) {
 			cin >> x >> y;
-			board[y][x] = 1;
+			board[x][y] = 1;
 		}
 		int count = 0;				// count: 지렁이 갯수
 
@@ -51,10 +52,10 @@ int main() {
 			}
 		}
 		cout << count << "\n";
-		/*for (int i = 0; i < n; i++) {
+		for (int i = 0; i < n; i++) {
 			fill(board[i], board[i] + m, 0);
 			fill(vist[i], vist[i] + m, false);
-		}*/
+		}
 	}
 	return 0;
 }

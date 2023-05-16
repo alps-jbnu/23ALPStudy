@@ -1,0 +1,72 @@
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int num[4];
+int arr[2500][2500];
+
+bool Ispaper(int N, int x, int y)
+{
+	bool ispaper = 1;
+	int cmpr = arr[y][x];
+
+	for (int i = y; i < y + N; i++)
+	{
+		for (int j = x; j < x + N; j++)
+		{
+			if (cmpr != arr[i][j]) ispaper = 0;
+		}
+	}
+
+	return ispaper;
+}
+
+void paper(int N, int x, int y)
+{
+	int width = N / 3;
+	int cmpr = arr[y][x];
+
+	if (Ispaper(N, x, y))
+	{
+		num[cmpr + 1]++;
+		return;
+	}
+	else
+	{
+		for (int i = 0; i < 3; i++)
+		{
+			for (int j = 0; j < 3; j++)
+			{
+				paper(width, x + i * width, y + j * width);
+			}
+		}
+	}
+}
+
+
+int main(void)
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	int N;
+
+	cin >> N;
+
+	for (int i = 0; i < N; i++)
+	{
+		for (int j = 0; j < N; j++)
+		{
+			cin >> arr[i][j];
+		}
+	}
+
+	paper(N, 0, 0);
+
+	for (int i = 0; i < 3; i++)
+	{
+		cout << num[i] << '\n';
+	}
+
+	return 0;
+}

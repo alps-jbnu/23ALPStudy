@@ -1,0 +1,67 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+#define MAX 202
+#define MAX_COST 0x3f3f3f3f
+
+int D[MAX][MAX];
+int FRD[MAX];
+int N, M, st, ed, cost, F, F_num, tm;
+
+int main(void)
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	fill(&D[0][0], &D[MAX - 1][MAX], MAX_COST);
+
+	cin >> N >> M;
+
+	while (M--)
+	{
+		cin >> st >> ed >> cost;
+		D[st][ed] = min(D[st][ed], cost);
+	}
+
+	cin >> F;
+
+	for (int i = 1; i <= F; i++)
+	{
+		cin >> F_num;
+		FRD[i] = F_num;
+	}
+
+	for (int i = 1; i <= N; i++) { // 기준이 될 중간노드
+		for (int j = 1; j <= N; j++) { // 시작노드
+			for (int k = 1; k <= N; k++) { // 도착할 노드
+				if (j == k)
+				{
+					D[j][k] = 0;
+				}
+				else
+				{
+					D[j][k] = min(D[j][i] + D[i][k], D[j][k]);
+				}
+			}
+		}
+	}
+
+	vector<pair<int, int>> v;
+
+	for (int i = 1; i <= N; i++) {
+		int mx = 0;
+		for (int j = 1; j <= F; j++)
+			mx = max(mx, D[i][FRD[j]] + D[FRD[j]][i]);
+		v.push_back({ mx, i });
+	}
+	sort(v.begin(), v.end());
+
+	int mn = v[0].first;
+	for (auto cur : v) {
+		if (mn < cur.first) break;
+		cout << cur.second << ' ';
+	}
+
+	return 0;
+}
