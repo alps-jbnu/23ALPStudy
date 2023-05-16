@@ -1,0 +1,61 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <queue>
+#include <tuple>
+using namespace std;
+typedef long long ll;
+
+#define MAX_COST 0x3f3f3f3f
+#define MAX 802
+
+int N, M;
+int D[MAX];
+vector<pair<int, int>> adj[MAX];
+
+ll solve(int st, int en) {
+    priority_queue< pair<int, int>,
+        vector<pair<int, int>>,
+        greater<pair<int, int>> > pq;
+
+    fill(D, D + N + 1, MAX_COST);
+    D[st] = 0;
+    pq.push({ D[st], st });
+
+    while (!pq.empty()) {
+        int u, v, w, dw;
+        tie(w, u) = pq.top(); pq.pop();
+        if (D[u] != w) continue;
+        for (auto nxt : adj[u]) {
+            tie(dw, v) = nxt;
+            dw += w;
+            if (dw < D[v]) {
+                D[v] = dw;
+                pq.push({ dw, v });
+            }
+        }
+    }
+    return D[en];
+}
+
+int main(void) {
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    cin >> N >> M;
+
+    int a, b, c;
+    while (M--) {
+        cin >> a >> b >> c;
+        adj[a].push_back({ c, b });
+        adj[b].push_back({ c, a });
+    }
+
+    int e1, e2;
+    cin >> e1 >> e2;
+    ll ans1 = solve(1, e1) + solve(e1, e2) + solve(e2, N);
+    ll ans2 = solve(1, e2) + solve(e2, e1) + solve(e1, N);
+    ll ans = min(ans1, ans2);
+    if (ans >= MAX_COST) ans = -1;
+    cout << ans;
+}
