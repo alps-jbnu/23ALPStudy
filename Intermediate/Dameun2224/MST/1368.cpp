@@ -41,6 +41,7 @@ int main(void) {
 	chk[1] = 1;
 	for (auto nxt : adj[1]) pq.push({ nxt.X, 1, nxt.Y });
 		
+	// 어차피 물을 하나는 대야하므로 다른 조건 필요 X
 	while (cnt < n) {
 		int cost, a, b;
 		tie(cost, a, b) = pq.top(); pq.pop();
