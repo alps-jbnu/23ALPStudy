@@ -26,4 +26,5 @@ int main() {
     seq(1, 0);
 
     return 0;
+    
 }
