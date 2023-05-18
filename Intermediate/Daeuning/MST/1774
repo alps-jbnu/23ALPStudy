@@ -1,0 +1,80 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <tuple>
+#include <cmath>
+using namespace std;
+
+vector<int> p(1005, -1);
+vector<tuple<long double, int, int>> edge;
+pair<int, int> coor[1005];
+int V, E, u, v, x, y;
+long double cost;
+
+int find(int x) {
+	if (p[x] < 0) return x;
+	return p[x] = find(p[x]);
+}
+
+// 같은 그룹인지 아닌지 return.
+bool is_diff_group(int u, int v) {
+	u = find(u); v = find(v);
+	if (u == v) return 0;
+	if (p[u] == p[v]) p[u]--;
+	if (p[u] < p[v]) p[v] = u;
+	else p[u] = v;
+	return 1;
+}
+
+int main(void)
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	cin >> V >> E;
+
+	// coor[i] 정점i+1의 좌표
+	for (int i = 1; i <= V; i++) {
+		cin >> x >> y;
+		coor[i].first = x;
+		coor[i].second = y;
+	}
+
+	// 모든 간선 cost 처리
+	for (int i = 1; i <= V; i++) { //좌표1
+		for (int j = 1; j <= V; j++) //좌표2
+		{
+			cost = sqrt(pow(coor[i].first - coor[j].first, 2) + pow(coor[i].second - coor[j].second, 2));
+			edge.push_back({ cost, i, j });
+		}
+	}
+
+	sort(edge.begin(), edge.end());
+	int cnt = 0;
+	long double ans = 0;
+
+	//이미 연결된 통로 설정하기
+	for (int i = 0; i < E; i++)
+	{
+		cin >> u >> v;
+		if (!is_diff_group(u, v)) continue;
+		if (!is_diff_group(v, u)) continue;
+		cnt++;
+		if (cnt == V - 1) break;
+	}
+
+	//이미 연결된 통로 기반으로 MST구하기
+	for (int i = 0; i < edge.size(); i++) {
+		tie(cost, u, v) = edge[i];
+		if (!is_diff_group(u, v)) continue;
+		ans += cost;
+		cnt++;
+		if (cnt == V - 1) break;
+	}
+
+	cout << fixed;
+	cout.precision(2);
+	cout << ans;
+
+	return 0;
+}
