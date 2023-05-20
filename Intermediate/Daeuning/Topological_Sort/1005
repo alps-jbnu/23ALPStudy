@@ -1,0 +1,66 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <queue>
+using namespace std;
+
+queue <int> Q;
+int deg[1005];
+int cost[1005];
+int D[1005];
+int N, M, T, W, st, ed;
+
+int main(void)
+{
+	cin >> T;
+
+	while (T--)
+	{
+		cin >> N >> M;
+
+		int ans = 0;
+		vector <int> adj[1002];
+
+		for (int i = 1; i <= N; i++)
+		{
+			cin >> cost[i];
+		}
+
+		for (int i = 1; i <= M; i++) 
+		{
+			cin >> st >> ed;
+			adj[st].push_back(ed);
+			deg[ed]++;
+		}
+
+		cin >> W;
+
+		for (int i = 1; i <= N; i++)
+		{
+			if (deg[i] == 0)
+			{
+				Q.push(i);
+				D[i] = cost[i];
+			}
+		}
+
+		while (!Q.empty())
+		{
+			int cur = Q.front(); Q.pop();
+			for (int nxt : adj[cur])
+			{
+				D[nxt] = max(D[nxt], D[cur] + cost[nxt]);
+				deg[nxt]--;
+				if (deg[nxt] == 0) Q.push(nxt);
+			}
+		}
+
+		cout << D[W] << '\n';
+
+		fill(D, D + N + 2, 0);
+		fill(deg, deg + N + 2, 0);
+	}
+
+
+	return 0;
+}
