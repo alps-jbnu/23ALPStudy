@@ -9,7 +9,7 @@ int n;
 int times[10001];
 int d[10001];
 vector<int> adj[10001];
-priority_queue<int, vector<int>, greater<int>> pq;
+queue<int> q;
 int inComing[10001];
 int ans;
 
@@ -33,18 +33,18 @@ int main() {
     }
     for(int i=1; i<=n; i++) {
         if(inComing[i] == 0) {
-            pq.push(i);
+            q.push(i);
             d[i] = times[i];
         }
     }
-    while(!pq.empty()) {
-        int cur = pq.top();
-        pq.pop();
+    while(!q.empty()) {
+        int cur = q.front();
+        q.pop();
         for(auto nxt : adj[cur]) {
             inComing[nxt]--;
             d[nxt] = max(d[nxt], d[cur]+ times[nxt]);
             if(inComing[nxt] == 0) {
-                pq.push(nxt);
+                q.push(nxt);
             }
         }
     }
