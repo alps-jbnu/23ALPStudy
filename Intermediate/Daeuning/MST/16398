@@ -1,0 +1,59 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <tuple>
+using namespace std;
+
+vector<int> p(1005, -1);
+vector<tuple<int, int, int>> edge;
+int V, E, cost, u, v;
+
+int find(int x) {
+	if (p[x] < 0) return x;
+	return p[x] = find(p[x]);
+}
+
+// 같은 그룹인지 아닌지 return.
+bool is_diff_group(int u, int v) {
+	u = find(u); v = find(v);
+	if (u == v) return 0;
+	if (p[u] == p[v]) p[u]--;
+	if (p[u] < p[v]) p[v] = u;
+	else p[u] = v;
+	return 1;
+}
+
+int main(void)
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	cin >> V;
+
+	int E = 0;
+
+	for (int i = 1; i <= V; i++) {
+		for (int j = 1; j <= V; j++) {
+			int cost;
+			cin >> cost;
+			if (i >= j) continue;
+			edge.push_back({ cost, i, j });
+			E++;
+		}
+	}
+
+	sort(edge.begin(), edge.end());
+	int cnt = 0;
+	long long ans = 0;
+
+	for (int i = 0; i < E; i++) {
+		tie(cost, u, v) = edge[i];
+		if (!is_diff_group(u, v)) continue;
+		ans += cost;
+		cnt++;
+		if (cnt == V - 1) break;
+	}
+	cout << ans;
+
+	return 0;
+}
