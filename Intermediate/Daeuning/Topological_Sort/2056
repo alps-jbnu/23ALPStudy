@@ -1,0 +1,61 @@
+#include <iostream>
+#include <algorithm>
+#include <queue>
+#include <vector>
+using namespace std;
+
+vector<int> adj[10005];
+queue<int> Q;
+int deg[10005];
+int cost[10005];
+int D[10005];
+int N, M, st, T, num, ans;
+
+int main(void)
+{
+	cin >> N;
+
+	// 그래프, 간선 완성
+	for (int i = 1; i <= N; i++)
+	{
+		cin >> T >> num;
+
+		cost[i] = T;
+
+		while (num--)
+		{
+			cin >> st;
+			adj[st].push_back(i);
+			deg[i]++;
+		}
+	}
+
+	for (int i = 1; i <= N; i++)
+	{
+		if (deg[i] == 0)
+		{
+			Q.push(i);
+			D[i] = cost[i];
+		}
+	}
+
+	while (!Q.empty())
+	{
+		int cur = Q.front(); Q.pop();
+		for (int nxt : adj[cur])
+		{
+			D[nxt] = max(D[nxt], D[cur] + cost[nxt]);
+			deg[nxt]--;
+			if (deg[nxt] == 0) Q.push(nxt);
+		}
+	}
+
+	for (int i = 1; i <= N; i++)
+	{
+		ans = max(ans, D[i]);
+	}
+
+	cout << ans;
+
+	return 0;
+}

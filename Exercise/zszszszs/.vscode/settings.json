@@ -4,6 +4,9 @@
     "ratio": "cpp",
     "iosfwd": "cpp",
     "vector": "cpp",
-    "ios": "cpp"
+    "ios": "cpp",
+    "string": "cpp",
+    "deque": "cpp",
+    "queue": "cpp"
   }
 }

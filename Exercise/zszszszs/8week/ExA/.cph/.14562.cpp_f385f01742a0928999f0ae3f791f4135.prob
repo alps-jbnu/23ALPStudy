@@ -1,0 +1,1 @@
+{"name":"Local: 14562","url":"/Users/zs/23ALPStudy/Exercise/zszszszs/8week/ExA/14562.cpp","tests":[{"id":1684146469785,"input":"6\n10 20\n2 7\n15 62\n10 37\n11 50\n34 59","output":"3\n3\n4\n4\n5\n25"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/zs/23ALPStudy/Exercise/zszszszs/8week/ExA/14562.cpp","group":"local","local":true}
