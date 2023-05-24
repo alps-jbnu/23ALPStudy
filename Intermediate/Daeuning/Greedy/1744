@@ -1,0 +1,62 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+using namespace std;
+
+int N, num;
+vector <int> V_pos;
+vector <int> V_neg;
+
+int main(void)
+{
+	cin >> N;
+
+	for (int i = 0; i < N; i++)
+	{
+		cin >> num;
+
+		if (num > 0) V_pos.push_back(num);
+		else V_neg.push_back(num);
+	}
+
+	sort(V_pos.begin(), V_pos.end());
+	sort(V_neg.begin(), V_neg.end());
+
+	long long sum = 0;
+
+	for (int i = V_pos.size() - 1; i >= 0; i--)
+	{
+		if (i == 0)
+		{
+			sum += V_pos[i];
+		}
+		else if (V_pos[i] + V_pos[i - 1] < V_pos[i] * V_pos[i - 1])
+		{
+			sum += V_pos[i] * V_pos[i - 1];
+			i--;
+		}
+		else {
+			sum += V_pos[i];
+		}
+	}
+
+	for (int i = 0; i < V_neg.size(); i++)
+	{
+		if (i == V_neg.size() - 1)
+		{
+			sum += V_neg[i];
+		}
+		else if (V_neg[i] + V_neg[i + 1] < V_neg[i] * V_neg[i + 1])
+		{
+			sum += V_neg[i] * V_neg[i + 1];
+			i++;
+		}
+		else {
+			sum += V_neg[i];
+		}
+	}
+
+	cout << sum;
+
+	return 0;
+}

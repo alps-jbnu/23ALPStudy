@@ -1,0 +1,43 @@
+#include <iostream>
+#include <algorithm>
+#include <string>
+#include <stdio.h>
+using namespace std;
+
+string num;
+string res;
+bool isMinus;
+
+int main()
+{
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+
+    int result = 0;
+    cin >> num;
+
+    for (int i = 0; i <= num.length(); i++) {
+
+        if (num[i] == '-' || num[i] == '+' || i == num.size()) {
+            if (isMinus) {
+                result -= stoi(res);
+                res = "";
+            }
+            else {
+                result += stoi(res);
+                res = "";
+            }
+        }
+        else {
+            res += num[i];
+        }
+
+        if (num[i] == '-') {
+            isMinus = true;
+        }
+    }
+
+    cout << result;
+
+    return 0;
+}
