@@ -1,0 +1,92 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <queue>
+#include <unordered_map>
+#include <string>
+using namespace std;
+
+unordered_map <string, int> nameToindex;
+unordered_map <int, string> indexToname;
+vector <int> adj[1005];
+vector <int> res[1005];
+vector <int> family;
+int indeg[1005];
+string name[1005];
+string st, ed;
+int N, M, cnt;
+
+int main(void)
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	cin >> N;
+
+	for (int i = 1; i <= N; i++)
+	{
+		cin >> name[i];
+	}
+
+	sort(name, name + N + 1);
+
+	for (int i = 1; i <= N; i++)
+	{
+		nameToindex[name[i]] = i;
+		indexToname[i] = name[i];
+	}
+
+	cin >> M;
+
+	// adj에 조상-후손 정보 넣기
+	while (M--)
+	{
+		cin >> ed >> st;
+		adj[nameToindex[st]].push_back(nameToindex[ed]);
+		indeg[nameToindex[ed]]++;
+	}
+
+	// 시조들의 이름 저장 및 출력
+	for (int i = 1; i <= N; i++)
+	{
+		if (indeg[i] == 0)
+		{
+			cnt++;
+			family.push_back(i);
+		}
+	}
+
+	cout << cnt << '\n';
+
+	for (int i = 0; i < cnt; i++)
+	{
+		cout << indexToname[family[i]] << ' ';
+	}
+
+	cout << '\n';
+
+	// 겹치는 부분 해결하기
+	for (int i = 1; i <= N; i++)
+	{
+		sort(adj[i].begin(), adj[i].end());
+
+		for (int j = 0; j < adj[i].size(); j++)
+		{
+			if (indeg[adj[i][j]] - indeg[i] == 1) res[i].push_back(adj[i][j]);
+		}
+	}
+
+	for (int i = 1; i <= N; i++)
+	{
+		cout << indexToname[i] << ' ' << res[i].size() << ' ';
+
+		for (int j = 0; j < res[i].size(); j++)
+		{
+			cout << indexToname[res[i][j]] << ' ';
+		}
+
+		cout << '\n';
+	}
+
+	return 0;
+}
