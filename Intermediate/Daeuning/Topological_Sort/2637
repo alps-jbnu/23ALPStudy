@@ -1,0 +1,68 @@
+#include <iostream>
+#include <algorithm>
+#include <queue>
+#include <vector>
+using namespace std;
+
+vector<pair<int, int>> adj[105];
+queue<int> Q;
+int cost[105][105];
+int deg[105];
+int N, M, st, ed, num;
+
+int main(void)
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+
+	cin >> N >> M;
+
+	for (int i = 0; i < M; i++)
+	{
+		cin >> ed >> st >> num;
+		adj[st].push_back({ ed, num });
+		deg[ed]++;
+	}
+
+	for (int i = 1; i <= N; i++)
+	{
+		if (deg[i] == 0)
+		{
+			Q.push(i);
+			deg[i] = -1;
+		}
+	}
+
+	while (!Q.empty())
+	{
+		int cur = Q.front(); Q.pop();
+		for (pair<int, int> nxt : adj[cur])
+		{
+			deg[nxt.first]--;
+			if (deg[cur] == -1)
+			{
+				cost[nxt.first][cur] += nxt.second;
+			}
+			else
+			{
+				for (int i = 1; i <= N; i++)
+				{
+					cost[nxt.first][i] += nxt.second * cost[cur][i];
+				}
+			}
+			if (deg[nxt.first] == 0) Q.push(nxt.first);
+		}
+	}
+
+
+
+	for (int i = 1; i <= N; i++)
+	{
+		if (deg[i] == -1)
+		{
+			cout << i << ' ' << cost[N][i] << '\n';
+		}
+	}
+
+	return 0;
+}
