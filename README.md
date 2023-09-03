@@ -5,12 +5,6 @@
 ## Previous Study
 [22ALPStudy](https://github.com/alps-jbnu/22ALPStudy)
   
-## Study in Progress
-- [Basic](./Basic/)
-- [Intermediate](./Intermediate/)
-- [Exercise](./Exercise/)
-- [Advanced](./Advanced/)
-  
 ## How to Contribute
 1. fork
 2. 해당 스터디 내에 자신의 이름으로 폴더 만들기  
