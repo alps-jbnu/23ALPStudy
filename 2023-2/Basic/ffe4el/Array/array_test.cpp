@@ -13,10 +13,10 @@ void insert(int idx, int num, int arr[], int& len){
 }
 
 void erase(int idx, int arr[], int& len){
+  len--;
   for(int i=idx; i<len; i++){
     arr[i] = arr[i+1];
   }
-  len--;
 }
 
 void printArr(int arr[], int& len){
