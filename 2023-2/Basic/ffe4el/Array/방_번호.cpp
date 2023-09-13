@@ -11,13 +11,13 @@ int main(){
     int cnt=1;
     for(int i=0; i<n.size(); i++){
         if(int(n[i]-48)==9){
-            // cout << cmp[6] << endl;
             if(cmp[6]-1>=0){
                 cmp[6] -= 1;
             }
             else{
                 cnt++;
                 int cmp[9] = {1,1,1,1,1,1,2,1,1}; //초기화
+                //여기서 초기화가 6과 9만 제대로 안되는데,, 왜 그런지 꼭 찾고 싶슴동
                 cmp[6] -= 1;
             }
         }
