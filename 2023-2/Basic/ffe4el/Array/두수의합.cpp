@@ -24,7 +24,7 @@ int main(){
     for(int i=0; i<n; i++){
         int b = v.at(i);
         cout<< "b" << b << endl;
-        for(int j=0; j<n; j++){
+        for(int j=i; j<n; j++){
             int c= v.at(j);
             cout<< "c" << c << endl;
             if(b+c==m){
