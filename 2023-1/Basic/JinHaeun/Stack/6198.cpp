@@ -1,0 +1,48 @@
+#include <iostream>
+#include <stack>
+using namespace std;
+
+int main()
+{
+	ios::sync_with_stdio(0);
+    cin.tie(0);
+    
+    int n;        // 빌딩 개수  
+    cin >> n;
+
+    stack<int> stk;       
+
+    int a;
+    long long cnt = 0;        //옥상정원 확인 가능 총 수 높이 1,000,000,000 이래서 롱롱  
+    int num = 0;        //스택에 남아있는 건물 갯수  
+
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a;
+        
+        if(i != 0)
+        {
+        	while(!stk.empty())
+        	{
+        		if(stk.top() > a )
+        		{
+        			cnt += num;
+        			break;
+				}	
+        		else
+        		{
+        			stk.pop(); 
+        			num--;
+				}		
+			}
+		}
+        
+		stk.push(a);
+		num++;
+    }
+	
+	cout << cnt;
+    
+
+    return 0;
+}
