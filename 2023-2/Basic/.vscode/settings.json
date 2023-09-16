@@ -51,7 +51,9 @@
         "__hash_table": "cpp",
         "__split_buffer": "cpp",
         "array": "cpp",
-        "unordered_map": "cpp"
+        "unordered_map": "cpp",
+        "ratio": "cpp",
+        "list": "cpp"
     },
 
 }
