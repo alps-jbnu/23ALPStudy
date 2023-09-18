@@ -36,7 +36,6 @@ int main(){
             if(t!=L.end()){
                 t++;
             }
-
         }
         else if(b=='B'){
             if(t != L.begin()){
