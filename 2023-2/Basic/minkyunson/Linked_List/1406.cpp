@@ -7,14 +7,6 @@ private:
     char c;
     dll * prev;
     dll * next;
-    void addprev(dll * a)
-    {
-        prev = a;
-    }
-    void addnext(dll * a)
-    {
-        next = a;
-    }
 public:
     void init()
     {
@@ -27,12 +19,12 @@ public:
     void add_prev(dll * a)
     {
         prev = a;
-        a -> addnext(this);
+        a -> next = this;
     }
     void add_next(dll * a)
     {
         next = a;
-        a -> addprev(this);
+        a -> prev = this;
     }
     dll * return_prev()
     {
