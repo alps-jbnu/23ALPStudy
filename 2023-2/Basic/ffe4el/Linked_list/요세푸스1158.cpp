@@ -2,7 +2,7 @@
 #include <queue>
 using namespace std;
 
-//큐를 이용해서 풀기
+//큐를 이용해서 풀기(깔끔..)
 int main(){
     queue <int> q;
     int n,k;
@@ -25,6 +25,7 @@ int main(){
     cout << q.front() <<">"<<endl;
     return 0;
 }
+
 
 
 //배열을 써서 해보려고 했는데, 시간복잡도가 너무 큼... n제곱이상임...
