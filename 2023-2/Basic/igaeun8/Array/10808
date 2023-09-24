@@ -1,0 +1,23 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+	
+	string s;
+	int apb[26] = { 0 };
+	cin >> s;
+
+	//알파벳 문자 횟수 계산
+	for (int i = 0; i < s.size(); i++) {
+		apb[s[i] - 'a']++; 
+	}
+
+	//각 알파벳 문자 횟수 출력 
+	for (int i = 0; i < 26; i++) {
+		cout << apb[i] << " ";
+	}
+
+	return 0;
+}
