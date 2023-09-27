@@ -1,0 +1,36 @@
+#include <iostream>
+#include <list>
+#include <string>
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+
+    while (t--) { //t가 0이 될 때까지 반복
+        list<char> lis; //이중 연결 리스트 선언
+        list<char>::iterator iter = lis.begin();
+        string s;
+        cin >> s;
+
+        for (auto c : s) {
+            if (c == '-') {
+                if (iter != lis.begin())
+                    iter = lis.erase(--iter);
+            }
+            else if (c == '<') {
+                if (iter != lis.begin())
+                    iter--;
+            }
+            else if (c == '>') {
+                if (iter != lis.end())
+                    iter++;
+            }
+            else
+                lis.insert(iter, c);
+        }
+        for (auto a : lis) cout << a;
+        cout << '\n';
+    }
+    return 0;
+}
