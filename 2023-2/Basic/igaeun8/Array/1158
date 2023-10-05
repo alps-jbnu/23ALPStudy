@@ -1,0 +1,36 @@
+#include <iostream>
+#include <list>
+using namespace std;
+
+
+int main(void) {
+    int n, k;
+    cin >> n >> k;
+
+    list<int> L; // 연결 리스트 선언
+
+    for (int i = 1; i <= n; i++) L.push_back(i);   // 1~N 까지의 숫자 리스트에 추가
+    list<int>::iterator t = L.begin(); // 반복자 선언 
+
+    cout << "<";
+    int temp;
+
+    while (L.size()) {
+        for (int i = 1; i < k; i++) {
+            if (++t == L.end()) {
+                t = L.begin();
+                continue;
+            }
+        }
+        if (L.size() == 1) // 마지막 숫자
+            cout << *t;
+        else
+            cout << *t << ", ";
+
+        t = L.erase(t);
+        // 삭제한 원소 자리가 이미 end인 경우 begin으로 보내줌
+        t = (t == L.end()) ? L.begin() : t;
+    }
+
+    cout << ">";
+}
