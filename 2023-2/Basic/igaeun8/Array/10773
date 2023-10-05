@@ -1,0 +1,26 @@
+#include <iostream>
+#include <stack>
+using namespace std;
+
+//10773
+
+int main(void) {
+    int k, num;
+    cin >> k;
+    stack<int> s;
+
+    for (int i = 0; i < k; i++) {
+        cin >> num;
+        if (num == 0) s.pop();
+        else s.push(num);
+    }
+
+    int ans = 0;
+    int len = s.size();
+    for (int i = 0; i < len; i++) {
+        ans += s.top();
+        s.pop();
+    }
+    cout<<ans;
+    
+}
