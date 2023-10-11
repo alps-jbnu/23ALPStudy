@@ -12,7 +12,7 @@ int main(void) {
 	for (int i = 0; i < n; i++) {
 		cin >> tmp;
 		num[i]=tmp;
-		cnt[tmp] = 1;
+		cnt[tmp] = 1; //원소 체크(기록)을 해서 배열의 원소 a에 대해서 x-a가 배열에 있는 지 체크하는 법
 	}
 	cin >> x;
 	int sum = 0;
