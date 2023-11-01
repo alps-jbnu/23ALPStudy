@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+#include <stack>
+using namespace std;
+
+//스택 10828 
+
+int main(void) {
+	stack<int> S;
+	int n;
+	cin >> n;
+
+	while (n--) {
+		string c;
+		cin >> c;
+		if (c == "push") {
+			int val;
+			cin >> val;
+			S.push(val);
+		}
+		else if (c == "pop") {
+			if (S.empty()) 
+				cout << -1 << '\n';
+			else {
+				cout << S.top() << '\n';
+				S.pop();
+			}
+		}
+
+		else if (c == "size") {
+			cout << S.size() << '\n';
+		}
+		else if (c == "empty") {
+			cout << (int)S.empty() << '\n';
+		}
+		else{
+			if (S.empty()) cout << -1 << '\n';
+			else cout <<S.top() << '\n';
+		}
+	
+	}
+}
