@@ -42,6 +42,10 @@ int main()
     bool *visit = new bool[m];
     
     kk = arr;
+    for(int i = 0; i < m; i++)
+    {
+        visit[i] = false;
+    }
     
     f(n, m, arr, visit);
     
