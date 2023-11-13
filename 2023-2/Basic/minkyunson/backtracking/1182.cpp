@@ -40,4 +40,5 @@ int main()
     
     f(arr, n, 0, s);
     cout << total << endl;
+    delete[] arr;
 }
