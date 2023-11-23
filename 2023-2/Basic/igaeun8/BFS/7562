@@ -1,0 +1,86 @@
+#include <iostream>
+#include <queue>
+using namespace std;
+ 
+int L;
+int a, b, c, d;
+const int MAX = 300;
+int map[MAX][MAX];
+bool visited[MAX][MAX];
+int path[MAX][MAX];
+int dy[] = {2,1,2,1,-2,-1,-2,-1};
+int dx[] = {1,2,-1,-2,1,2,-1,-2};
+queue<pair<int, int>> q;
+ 
+void reset() {
+    for (int i = 0; i < L; i++) {
+        for (int j = 0; j < L; j++) {
+            map[i][j] = 0;
+            visited[i][j] = 0;
+            path[i][j] = 0;
+        }
+    }
+    while (!q.empty()) {
+        q.pop();
+    }
+}
+ 
+void printPath() {
+    printf("\n[PATH]\n");
+    for (int i = 0; i < L; i++) {
+        for (int j = 0; j < L; j++) {
+            printf("%2d ", path[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
+ 
+void BFS(int y, int x) {
+    visited[y][x] = true;
+    q.push(make_pair(y, x));
+ 
+    while (!q.empty()) {
+        int y = q.front().first;
+        int x = q.front().second;
+        q.pop();
+ 
+        if (y == c && x == d) break;
+ 
+        for (int i = 0; i < 8; i++) {
+            int ny = y + dy[i];
+            int nx = x + dx[i];
+ 
+            if (ny < 0 || nx < 0 || ny >= L || nx >= L)
+                continue;
+            if (visited[ny][nx] == 0) {
+                visited[ny][nx] = true;
+                q.push(make_pair(ny, nx));
+                path[ny][nx] = path[y][x] + 1;
+            }
+        }
+ 
+    }
+ 
+}
+ 
+int main() {
+    int t;
+    cin >> t;
+ 
+    while (t--) {
+        reset();
+ 
+        cin >> L;
+        
+        cin >> a >> b >> c >> d;
+ 
+        BFS(a, b);
+ 
+        //printPath();
+ 
+        cout << path[c][d] << endl;
+ 
+    }
+ 
+}

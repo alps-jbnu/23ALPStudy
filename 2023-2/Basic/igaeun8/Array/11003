@@ -1,0 +1,34 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <deque>
+using namespace std;
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+    int n, l, x;
+    cin >> n >> l;
+    vector<int>ans;
+    deque<pair<int, int>>dq; // pair< 원소 값 , 인덱스 >
+    for (int i = 0; i < n; i++) {
+        //구간에서 벗어나는 값 제거
+        //dq.front().second == 덱 가장 왼쪽 원소 인덱스 
+        if (!dq.empty() && dq.front().second < i - l + 1) {
+            dq.pop_front(); // 덱에는 무조건 Ai-L+1 ~ Ai까지의 원소만 있어야 함 -> 범위가 L
+        }
+        cin >> x;
+        while (!dq.empty() && dq.back().first > x) { 
+            // 현재 원소보다 큰 값 제거 -> 최소값이 될 수 있는 후보들만 남기고 삭제
+            dq.pop_back(); // 덱 오름차순 정렬
+        }
+        dq.push_back(make_pair(x, i)); 
+        //현재 원소, 인덱스 추가 
+        //쌍으로 마들어 덱에 추가 -> 현재 구간 내에서 최소값 계산 
+        ans.push_back(dq.front().first);
+    }
+    for (int i = 0; i < ans.size(); i++) {
+        cout << ans[i] << " ";
+    }
+    cout << "\n";
+}
